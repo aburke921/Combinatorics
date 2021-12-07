@@ -12,8 +12,8 @@ def partial_permutation(n, k):
     kfact = math.factorial(k)
    
     denominator = kfact *nminkkfact
-    return(factor/denominator)
+    return(factor/nminkkfact)
 
-print(partial_permutation(4, 2))
+print(partial_permutation(21, 7)%1000000)
 
  
