@@ -1,1 +1,8 @@
+# Removes Rosalind dataset donloads
 *.txt
+
+# Removes PyCharm IDE files
+*.idea
+
+# Removes file automatically created for MAC_OS
+.DS_Store
