@@ -1,15 +1,48 @@
+
+def reverseCompliment(DNA):
+    reverseComp = ''
+    for letterPos in range(len(DNA)):
+
+        letter = DNA[len(DNA) - letterPos - 1]
+
+        if letter == 'A':
+            compLetter = 'T'
+        elif letter == 'T':
+            compLetter = 'A'
+        elif letter == 'C':
+            compLetter = 'G'
+        else:
+            compLetter = 'C'
+
+        reverseComp += compLetter
+
+    return reverseComp
+
+
 def OpenReadingFrames(DNA):
 
-    RNA = transcribe_DNA_into_RNA(DNA)
-    # print('Original dna: ', DNA)
-    # print('dna into rna: ', RNA)
-    reading_frames = get_all_reading_frames(RNA)
+    reversedDNA = reverseCompliment(DNA)
 
+    RNA1 = transcribe_DNA_into_RNA(DNA)
+    RNA2 = transcribe_DNA_into_RNA(reversedDNA)
 
+    reading_frames1 = get_all_reading_frames(RNA1)
+    reading_frames2 = get_all_reading_frames(RNA2)
+
+    reading_frames = reading_frames1 + reading_frames2
+    cleaned_reading_frames = []
+
+    # Removes duplicates and reading frames that have nothing in them
     for frame in reading_frames:
+        if cleaned_reading_frames.count(frame) == 0 and frame != []:
+            cleaned_reading_frames.append(frame)
+
+    for frame in cleaned_reading_frames:
         # print('reading_frame: ', frame)
         protein = translate_codons_into_protein(frame)
         print(protein)
+
+
 
 
 
@@ -24,7 +57,8 @@ def get_codons_in_frame(RNA):
 
 
 def get_codons_until_stop_codon(codons):
-    stop_locations = [len(codons)]
+    stop_locations = []
+
     if codons.count('UAA') > 0:
         stop_locations.append(codons.index('UAA'))
 
@@ -34,10 +68,10 @@ def get_codons_until_stop_codon(codons):
     if codons.count('UGA') > 0:
         stop_locations.append(codons.index('UGA'))
 
-    correct_stop_location = min(stop_locations)
-    reading_frame = codons[:correct_stop_location]
+    if len(stop_locations) != 0:
+        return codons[:min(stop_locations)]
 
-    return reading_frame
+    return []
 
 
 
@@ -52,6 +86,7 @@ def get_all_reading_frames(RNA):
         start_location = RNA.index('AUG', start_location + 1)
         codons = get_codons_in_frame(RNA[start_location:])
         reading_frame = get_codons_until_stop_codon(codons)
+
         reading_frames.append(reading_frame)
 
     return reading_frames
@@ -117,8 +152,12 @@ def translate_codons_into_protein(list_of_codons):
 
 
 
-file = open('Dataset.txt', 'r')
+file = open('rosalind_orf.txt', 'r')
 fileLines = file.readlines()
-DNA = fileLines[1]
+
+DNA = ""
+
+for line in fileLines[1:]:
+    DNA = DNA + line.strip('\n')
 
 OpenReadingFrames(DNA)
