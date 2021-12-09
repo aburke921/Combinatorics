@@ -49,8 +49,8 @@ def get_num_of_ways_translated(protein):
     print(total_num_of_ways)
 
 
-file = open('Dataset.txt', 'r')
-protein = file.read()
+file = open('rosalind_mrna.txt', 'r')
+protein = file.read().split()[0]
 
 get_num_of_ways_translated(protein)
 
