@@ -6,7 +6,7 @@ import itertools
 
 
  #input is n                               
-n = 5                                             
+n = 6
 print(math.factorial(n))                            
 perms = itertools.permutations(list(range(1, n + 1)))
 

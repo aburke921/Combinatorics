@@ -5,7 +5,7 @@
 
 import itertools
     
-n = 4
+n = 3
 permutation = []
 x = 0
 for i in itertools.permutations(list(range(1, n+1))):
