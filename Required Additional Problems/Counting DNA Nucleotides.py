@@ -1,10 +1,13 @@
+def wordCount(str):
+    symbolCount = {}
+
+    for symbol in str:
+        symbolCount[symbol] = symbolCount.get(symbol, 0) + 1
+
+    print(symbolCount.get('A'), symbolCount.get('C'), symbolCount.get('G'), symbolCount.get('T'))
+
+
 string=open("rosalind_dna.txt").readlines()
 sequence=string[0]
-nts=list(sequence)
-database={}
-for i in range(len(nts)): 
-    if nts[i] in database: 
-        database[nts[i]]+=1
-    else: database[nts[i]]=1
-for key, value in database.items(): 
-    print (key, value)
+
+wordCount(sequence)
