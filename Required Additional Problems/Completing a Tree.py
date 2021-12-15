@@ -4,7 +4,7 @@
 
 
 treeData = []                                          
-with open("sampledata.txt", "r") as file:             
+with open("rosalind_tree.txt", "r") as file:
     for line in file:                                 
         split_data = [int(x) for x in line.split()]
         treeData.append(split_data)                    
