@@ -18,8 +18,19 @@ def getEdges(FASTAs, sequences, k):
 file = open('rosalind_grph.txt', 'r')
 fileLines = file.read().split()
 
-FASTAs = [fileLines[FASTA][1:] for FASTA in range(0, len(fileLines), 2)]
-sequences = [fileLines[sequence] for sequence in range(1, len(fileLines), 2)]
+FASTAs = [fileLines[FASTA][1:] for FASTA in range(0, len(fileLines), 3)]
+sequences1 = [fileLines[sequence] for sequence in range(1, len(fileLines), 3)]
+sequences2 = [fileLines[sequence] for sequence in range(2, len(fileLines), 3)]
+
+sequences = []
+for sequence in range(len(sequences1)):
+    sequence1 = sequences1[sequence]
+    sequence2 = sequences2[sequence]
+    fullSequence = sequence1 + sequence2
+    sequences.append(fullSequence)
+
+
+data = {FASTAs[index]:sequences[index] for index in range(len(FASTAs))}
 
 s, t = getEdges(FASTAs, sequences, 3)
 
