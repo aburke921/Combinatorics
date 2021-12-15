@@ -13,7 +13,7 @@ s = {}
 a = None
 place = 0
 
-with open('../downloads/rosalind_gc (1).txt', 'r') as f:
+with open('rosalind_gc.txt', 'r') as f:
     
     iden = None
     string = None
