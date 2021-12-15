@@ -10,5 +10,5 @@ with open("sampledata.txt", "r") as file:
         treeData.append(split_data)                    
 
 n = treeData[0][0]                                     
-edges = treeData[1:]                                   
+edges = treeData[1: ]                                   
 print(n - len(edges) - 1)     
