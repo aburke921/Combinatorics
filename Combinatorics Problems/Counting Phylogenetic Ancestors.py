@@ -7,7 +7,7 @@
 
 #i spent way to long trying to program this before realizing that this happens everytime so i think it should be ok to just have this but im not entirely sure
 
-n = 80
+n = 8100
 output = n-2
 print(output)
 
