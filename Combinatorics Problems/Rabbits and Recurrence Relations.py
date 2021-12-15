@@ -6,7 +6,7 @@ lastmonthbreeding=0
 lastmonthtotal=1
 for i in range (months-1): 
     currentbreeding=lastmonthtotal
-    print(lastmonthtotal)
+    # print(lastmonthtotal)
     currenttotal=lastmonthbreeding*littersize+lastmonthtotal
     lastmonthbreeding=currentbreeding
     lastmonthtotal=currenttotal
