@@ -9,28 +9,24 @@ for string in rawdata: #for each string in list of all strings
     c=b[1].replace('\n','') #remove newline characters
     stringlist.append(c) #store strings in string list
 
-##creating list of all possible substrings##
-combos=[] #list to store lists of all possible substrings of each DNA string
-for a in range(len(stringlist)): #for each DNA string
-    combos2=[] #blank list to store substrings for each DNA string 
-    for idx in range(len(stringlist[a])+1): 
-        combos2.extend([stringlist[a][j:j+idx] for j in range(len(stringlist[a])-idx+1)]) #creates list of all substrings for each DNA string
-    combos.append(combos2) #combines above lists into list of lists of substrings
+##sorting and subdividing strings##
+srtinglist=sorted(stringlist, key=len) #sort list of strings from shortest to longest
+shortest=stringlist[0] #separate the shortest string to check against others
+complete=stringlist[1:] #store the rest of the strings to be checked against
 
-##looking for shared motif##
-#k=indexed length of list of all DNA string substring lists
-#m as iterated: each substring for each DNA string
-#n=repeat of k
-#combos[k] as iterated: each list of DNA substrings
-commonstring='' #blank string to store longest common substring
-for k in combos: #iterate through list of DNA strings
-    for m in k: #iterate through each DNA string- m is each element in DNA string
-        found=False
-        for n in combos:
-            if m in n: #if substring m is found in n(list of all possible substrings)
-                found=True
+##checking for common substrings##
+commonstring=[] #blank list to fill with longest common substring
+for k in range(len(shortest)): #iterator to match length of shortest string
+    for m in range(k,len(shortest)): #iterator to match above starting at each NT in string
+        n=shortest[k:m+1] #store each substring of shortest string in N as loops
+        found=False #boolean to swith if common substring found
+        for p in complete: #p is each string in list of all strings
+            if n in p: #if substring n is found in p
+                found=True #indicate common substring found
             else: 
+                found=False #if n is not in all strings p, not common
                 break #end the foor loop for computational efficiency
-        if found and len(m)>len(commonstring): #if the substring is found in all DNA strings and is the longest substring found
-            commonstring=m #store it as the common motif
-print(commonstring) #and print it
+        ##checking for longest common substring##
+        if found and len(n)>len(commonstring): #if the substring is found in all DNA strings and is the longest substring found
+            commonstring=n #store it as the common motif
+print(commonstring) #print resulting longest commong substring
