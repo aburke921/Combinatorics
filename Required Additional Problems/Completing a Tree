@@ -1,0 +1,12 @@
+
+#completing a tree
+#background problem for counting phylogenetic ancestors
+
+
+with open ("../downloads/sampledata.txt", "r") as file:
+        n = int(file.readline())
+        list = file.readlines()
+        
+        print(n-len(edges) - 1)
+        
+        
