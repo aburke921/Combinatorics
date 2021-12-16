@@ -1,10 +1,13 @@
+import math
+
 from math import factorial
 import sys
 sys.float_info.max
 def  bi_sum(n, k):
    # nplus = n+1
-    for i in range(k, n):
-        sol =  (1 + factorial(n))
-        so12 = factorial(k)*factorial(n-k)
-    return(sol//so12)%1000000
-print(bi_sum(1913, 1099))
+   c = 0
+   for i in range(k, n+1):
+         c+=(factorial(n))//(factorial(i)*factorial(n-i))
+   print(c%1000000)
+
+bi_sum(1947, 987)
