@@ -49,8 +49,4 @@ def revdistance(sequence, target): #function that combines above functions to fi
     return revs
 
 #implementtation of functions to solve provided dataset
-print(revdistance(string[0], string[1]))
-print(revdistance(string[3], string[4]))
-print(revdistance(string[6], string[7]))
-print(revdistance(string[9], string[10]))
-print(revdistance(string[12], string[13]))
+print(revdistance(string[0], string[1]), revdistance(string[3], string[4]), revdistance(string[6], string[7]), revdistance(string[9], string[10]), revdistance(string[12], string[13]))
